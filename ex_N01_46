@@ -22,31 +22,37 @@ class Car:  # tym razem bez nawiasów
             self.odometer_reading = mileage # dodajemy kolejna obiekt do klasy 
         else:
             print("Stop you can't roll back odometer")
-            
-"""New children class"""
+
 
     def increment_odometer(self, miles):
         self.odometer_reading += miles
     
+""" Create a childern class"""
+
 class Elecar(Car): # w nawias wstawiamy klase rodzica
     def __init__(self, make, model, year):
         super().__init__(make, model, year)
-
+        self.battery = Battery()
         """ dodajemy nowy obiekt do subklasy"""
 
         self.battery_size =75 # dodano nowy obiekt 
 
+    
+
+class Battery:
+    def __init__(self, baterry_size = 175):
+        self.batery_size = baterry_size
+
     def describe_battery(self):
-        print(f"This car has a {self.battery_size} voult battery")
+        print(f"This car has a {self.batery_size} voult battery")
 
 
 print("****"*8)
 my_tesla = Elecar("tesla",'models',2020)
 print(my_tesla.get_descriptive_name())
-my_tesla.describe_battery()
+my_tesla.battery.describe_battery()
 
 print("****"*8)
-
 my_used_car = Car('Subaru', 'Outback', 2016)
 print(my_used_car.get_descriptive_name())
 my_used_car.up_data(29899)
